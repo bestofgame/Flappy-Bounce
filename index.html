@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>Flappy Bounce - Ads Edition</title>
-	
+	<title>Flappy Bounce</title>
 	<link rel="manifest" href="appmanifest.json" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -15,71 +14,50 @@
 	<link rel="shortcut icon" sizes="256x256" href="icon-256.png" />
 
 	<style type="text/css">
-    * {
-        padding: 0;
-        margin: 0;
-    }
-    html, body {
-        background: #111; /* Fond très sombre pour voir les limites */
-        color: #fff;
-        overflow: hidden;
-        touch-action: none;
-        -ms-touch-action: none;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		html, body {
+			background: #000;
+			color: #fff;
+			overflow: hidden;
+			touch-action: none;
+			-ms-touch-action: none;
+			width: 100%;
+			height: 100%;
+		}
+		canvas {
+			touch-action-delay: none;
+			touch-action: none;
+			-ms-touch-action: none;
+		}
 
-    /* CONTENEUR DU JEU RÉDUIT */
-    #c2canvasdiv {
-        width: 70vw !important; /* Le jeu ne prend que 70% de la largeur de l'écran */
-        height: auto;
-        max-width: 1000px; /* Largeur max pour laisser de la place aux pubs */
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Ombre pour détacher le jeu */
-    }
+		/* CONTENEURS DES PUBS */
+		.ad-layer {
+			position: fixed;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 160px;
+			height: 600px;
+			z-index: 2147483647; /* Z-index maximum possible en CSS */
+			background: rgba(255, 255, 255, 0.05); /* Aide à voir la zone si la pub est bloquée */
+		}
+		
+		.ad-left { left: 5px; }
+		.ad-right { right: 5px; }
 
-    canvas {
-        width: 100% !important;
-        height: auto !important;
-    }
-
-    /* BANNIÈRES GAUCHE ET DROITE */
-    .ad-container {
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 160px;
-        height: 600px;
-        z-index: 9999;
-        background: #222; /* Fond de secours pour voir la zone */
-        display: block !important; /* Force l'affichage */
-    }
-    
-    .ad-left {
-        left: 5px;
-    }
-    
-    .ad-right {
-        right: 5px;
-    }
-
-    /* Sur petit écran, on réduit encore plus le jeu */
-    @media screen and (max-width: 1200px) {
-        #c2canvasdiv {
-            width: 50vw !important;
-        }
-    }
-</style>
+		#c2canvasdiv {
+			width: 100%;
+			height: 100%;
+		}
+    </style>
 </head> 
  
 <body> 
 	<div id="fb-root"></div>
 	
-	<div class="ad-container ad-left">
+	<div class="ad-layer ad-left">
 		<script type="text/javascript">
 			atOptions = {
 				'key' : '9b61f7351b78d433de0ffc16189bc341',
@@ -92,7 +70,7 @@
 		<script type="text/javascript" src="https://www.highperformanceformat.com/9b61f7351b78d433de0ffc16189bc341/invoke.js"></script>
 	</div>
 
-	<div class="ad-container ad-right">
+	<div class="ad-layer ad-right">
 		<script type="text/javascript">
 			atOptions = {
 				'key' : '9b61f7351b78d433de0ffc16189bc341',
