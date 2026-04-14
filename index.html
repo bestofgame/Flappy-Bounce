@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>Flappy Bounce</title>
+	<title>Flappy Bounce - Ads Edition</title>
+	
 	<link rel="manifest" href="appmanifest.json" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,27 +32,32 @@
 			-ms-touch-action: none;
 		}
 
-		/* Configuration des bannières */
-		.pub-sidebar {
-			position: absolute;
+		/* STYLE DES BANNIÈRES GAUCHE ET DROITE */
+		.ad-container {
+			position: fixed; /* Fixé sur l'écran */
 			top: 50%;
 			transform: translateY(-50%);
 			width: 160px;
 			height: 600px;
-			z-index: 1000; /* Pour être au-dessus du jeu si besoin */
+			z-index: 999999; /* Force l'affichage au premier plan */
+			background-color: rgba(255, 255, 255, 0.1); /* Rectangle léger pour test */
 		}
-		.pub-left {
-			left: 10px;
+		
+		.ad-left {
+			left: 0;
 		}
-		.pub-right {
-			right: 10px;
+		
+		.ad-right {
+			right: 0;
 		}
 
-		/* Masquer les pubs sur mobile pour ne pas cacher le jeu */
-		@media screen and (max-width: 1600px) {
-			.pub-sidebar {
-				display: none;
-			}
+		/* On centre le jeu au milieu pour laisser de la place aux pubs */
+		#c2canvasdiv {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
     </style>
 </head> 
@@ -59,7 +65,7 @@
 <body> 
 	<div id="fb-root"></div>
 	
-	<div class="pub-sidebar pub-left">
+	<div class="ad-container ad-left">
 		<script type="text/javascript">
 			atOptions = {
 				'key' : '9b61f7351b78d433de0ffc16189bc341',
@@ -72,7 +78,7 @@
 		<script type="text/javascript" src="https://www.highperformanceformat.com/9b61f7351b78d433de0ffc16189bc341/invoke.js"></script>
 	</div>
 
-	<div class="pub-sidebar pub-right">
+	<div class="ad-container ad-right">
 		<script type="text/javascript">
 			atOptions = {
 				'key' : '9b61f7351b78d433de0ffc16189bc341',
