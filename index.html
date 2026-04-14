@@ -24,43 +24,38 @@
         overflow: hidden;
         width: 100%;
         height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
-    /* CONTENEUR DU JEU RÉDUIT À 95% */
+    /* FIX : Centrage absolu du jeu */
     #c2canvasdiv {
-        position: absolute;
+        position: absolute; /* Détache le jeu du flux pour qu'il ignore les pubs */
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); /* Centrage parfait par rapport à l'écran */
         
-        /* On réduit la largeur et la hauteur de 5% */
         width: 90vw !important; 
-        height: 90vh !important;
+        height: 95vh !important;
         
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 1;
+        z-index: 1; /* Le jeu est en dessous des pubs */
     }
 
     canvas {
-        /* Le canvas s'adapte au conteneur de 95% tout en gardant ses proportions */
         max-width: 100%;
         max-height: 100%;
         object-fit: contain;
     }
 
-    /* BANNIÈRES (Elles restent sur les bords de l'écran 100%) */
+    /* BANNIÈRES (Fixées aux bords, elles ne poussent plus le jeu) */
     .ad-layer {
         position: fixed;
         top: 50%;
         transform: translateY(-50%);
         width: 160px;
         height: 600px;
-        z-index: 2147483647;
+        z-index: 2147483647; /* Toujours au-dessus */
     }
     
     .ad-left { left: 0; }
