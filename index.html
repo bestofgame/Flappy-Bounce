@@ -14,44 +14,58 @@
 	<link rel="shortcut icon" sizes="256x256" href="icon-256.png" />
 
 	<style type="text/css">
-		* {
-			padding: 0;
-			margin: 0;
-		}
-		html, body {
-			background: #000;
-			color: #fff;
-			overflow: hidden;
-			touch-action: none;
-			-ms-touch-action: none;
-			width: 100%;
-			height: 100%;
-		}
-		canvas {
-			touch-action-delay: none;
-			touch-action: none;
-			-ms-touch-action: none;
-		}
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    html, body {
+        background: #000;
+        color: #fff;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-		/* CONTENEURS DES PUBS */
-		.ad-layer {
-			position: fixed;
-			top: 50%;
-			transform: translateY(-50%);
-			width: 160px;
-			height: 600px;
-			z-index: 2147483647; /* Z-index maximum possible en CSS */
-			background: rgba(255, 255, 255, 0.05); /* Aide à voir la zone si la pub est bloquée */
-		}
-		
-		.ad-left { left: 5px; }
-		.ad-right { right: 5px; }
+    /* CONTENEUR DU JEU RÉDUIT À 95% */
+    #c2canvasdiv {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        /* On réduit la largeur et la hauteur de 5% */
+        width: 95vw !important; 
+        height: 95vh !important;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
 
-		#c2canvasdiv {
-			width: 95%;
-			height: 95%;
-		}
-    </style>
+    canvas {
+        /* Le canvas s'adapte au conteneur de 95% tout en gardant ses proportions */
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    /* BANNIÈRES (Elles restent sur les bords de l'écran 100%) */
+    .ad-layer {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 160px;
+        height: 600px;
+        z-index: 2147483647;
+    }
+    
+    .ad-left { left: 0; }
+    .ad-right { right: 0; }
+</style>
 </head> 
  
 <body> 
