@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gametesting002.pages.dev/sitemap.xml
